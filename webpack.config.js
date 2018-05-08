@@ -6,7 +6,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'seq-browser.js',
     library: 'seq',
-    libraryTarget: 'window'
+    libraryTarget: 'window',
   },
   target: 'web',
   module: {
@@ -15,9 +15,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         },
       },
-    ]
+    ],
   },
 };

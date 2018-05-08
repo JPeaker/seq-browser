@@ -4,5 +4,5 @@ module.exports = Object.freeze({
   INFORMATION: 'Information',
   WARNING: 'Warning',
   ERROR: 'Error',
-  FATAL: 'Fatal'
+  FATAL: 'Fatal',
 });

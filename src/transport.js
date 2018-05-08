@@ -13,7 +13,7 @@ module.exports = class Transport {
       '@mt': template,
     };
 
-    Object.keys(data).forEach(key => {
+    Object.keys(data).forEach((key) => {
       seqLog[key] = data[key];
     });
 
@@ -31,7 +31,7 @@ module.exports = class Transport {
 
     fetch(`${this.serverUrl}/api/events/raw?clef`, {
       method: 'POST',
-      body: jsonString
+      body: jsonString,
     });
   }
-}
+};

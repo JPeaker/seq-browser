@@ -27,12 +27,15 @@ module.exports = class Logger {
       this.writeToConsole(level, template, data);
       this.transport.writeToSeq(level, template, data);
     } catch (err) {
+      /* eslint-disable no-console */
       console.warn('Failed to send logs to Seq', err);
+      /* eslint-enable no-console */
     }
   }
 
-  writeToConsole(level, template, data) {
-    switch(level) {
+  static writeToConsole(level, template, data) {
+    /* eslint-disable no-console */
+    switch (level) {
       case logLevel.VERBOSE:
       case logLevel.DEBUG:
         console.debug(template, data);
@@ -48,5 +51,6 @@ module.exports = class Logger {
         console.log(template, data);
         break;
     }
+    /* eslint-enable no-console */
   }
-}
+};
