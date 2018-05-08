@@ -24,7 +24,7 @@ module.exports = class Logger {
 
   log(level, template, data = {}) {
     try {
-      this.writeToConsole(level, template, data);
+      Logger.writeToConsole(level, template, data);
       this.transport.writeToSeq(level, template, data);
     } catch (err) {
       /* eslint-disable no-console */

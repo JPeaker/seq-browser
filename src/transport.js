@@ -21,13 +21,19 @@ module.exports = class Transport {
     this.send();
   }
 
+  convertLogBufferToString() {
+    const jsonString = this.logBuffer.map(l => JSON.stringify(l)).join('\n');
+    this.logBuffer = [];
+
+    return jsonString;
+  }
+
   send() {
     if (!this.serverUrl || this.logBuffer.length === 0) {
       return;
     }
 
-    const jsonString = this.logBuffer.map(l => JSON.stringify(l)).join('\n');
-    this.logBuffer = [];
+    const jsonString = this.convertLogBufferToString();
 
     fetch(`${this.serverUrl}/api/events/raw?clef`, {
       method: 'POST',
