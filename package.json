@@ -56,6 +56,7 @@
     ],
     "sourceMap": false,
     "instrument": false,
-    "include": "src"
+    "include": ["src/**/*.js"],
+    "all": true
   }
 }
