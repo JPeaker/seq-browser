@@ -5,7 +5,19 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'seq-browser.js',
-    library: 'seqBrowser',
+    library: 'seq',
+    libraryTarget: 'window'
   },
   target: 'web',
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        },
+      },
+    ]
+  },
 };

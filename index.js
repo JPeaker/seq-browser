@@ -1,3 +1,3 @@
-export default () => {
-  console.log('hi');
-};
+const Logger = require('./src/logger');
+
+module.exports = new Logger();
