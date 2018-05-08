@@ -1,0 +1,19 @@
+{
+  "name": "seq-browser",
+  "version": "0.1.0",
+  "description": "Log to Seq from the browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisH91/seq-browser.git"
+  },
+  "author": "Chris Howard <chrishoward91@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChrisH91/seq-browser/issues"
+  },
+  "homepage": "https://github.com/ChrisH91/seq-browser#readme"
+}
