@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-  - "8"
+- '8'
 script:
-  - yarn test
+- yarn test
 cache: yarn
+deploy:
+  api_key:
+    secure: PqQFRwsPpmbeBgaf6bVQ60sjWa23JKKDkZJolowqbR6w+SK9SlMV7tqYSoTFOBULyUvXCqEVzANoGASU3zt9OtVqlzjCCaZ5685H3X6IZgmIznoSyBxQLcA56NFtXU+bqfo+0fvzfjekJML6Z99oBrMZsHUtPvwDhsH6oU12k5WBYawLCDe0/WFIKdBNVWNzOvU3SUMZyUbFQwhFkhbgfCEyYBowVjFq9muqAR4fSgulIgRxsMQlGGG597buKnTZDi8mvmxz/YIjnQ8/HuuxK7RVMCmxlyfpYcx/Vl91WifdC+zcQQBVsjJsMayZGerh5QVvYqdHj/73KXDjFevHE8IXY9pFEeTtdJ9dNx39yfF4ee9msG+wHkee0o6LoScxJNyJd3OwctvtAIVHWtLy72ckVEmnqDrALUy2hvYxkN2YL9do4/BXGJewSHLAqBWPw+hDKy2AjFvELS+MhozJ0iyAmmDs+dU3ug4cjE33He48vNSxnurFowbFkIsvKhXNuvSMimZXJU9LvSdDfARrylia2Rg24+TdIhNEbdMSyDvOuko/wSDRvfjMHYvAwXJgxoNNRXpFbco11guZcaeu2IqudqbX+idtO+R+hV3qV+I/1k2VCDyxfMgHGfkSNLriDtpIRyb1iAUWlU15cVnXo/KmWMHgFVvjXO0HOF+kOA0=

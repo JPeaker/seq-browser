@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-server": "node tools/test-server",
-    "dev": "webpack --config webconfig.config.js --mode development --progress --display-error-details ---watch",
+    "dev": "webpack --config webpack.config.js --mode development --progress --display-error-details ---watch",
+    "prod": "webpack --config webpack.config.js --mode production",
     "lint": "eslint **/*.js"
   },
   "repository": {
