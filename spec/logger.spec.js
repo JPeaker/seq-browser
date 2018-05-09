@@ -47,6 +47,39 @@ describe('Logger', () => {
     });
   });
 
+  describe('#log', () => {
+    it('passes through context by default', () => {
+      const logger = new Logger();
+      sinon.spy(logger.transport, 'writeToSeq');
+
+      logger.context.test = 'TEST';
+      logger.context.number = 12345;
+
+      logger.log(logLevel.INFORMATION, 'Testing');
+
+      logger.transport.writeToSeq.calledWith(sinon.match.any, sinon.match.any, sinon.match({
+        test: 'TEST',
+        number: 12345,
+      })).should.equal(true);
+    });
+
+    it('context gets combined with additional data', () => {
+      const logger = new Logger();
+      sinon.spy(logger.transport, 'writeToSeq');
+
+      logger.context.test = 'TEST';
+      logger.context.number = 12345;
+
+      logger.log(logLevel.INFORMATION, 'Testing', { hello: 'world' });
+
+      logger.transport.writeToSeq.calledWith(sinon.match.any, sinon.match.any, sinon.match({
+        test: 'TEST',
+        number: 12345,
+        hello: 'world',
+      })).should.equal(true);
+    });
+  });
+
   describe('#verbose', () => {
     it('calls #log with correct level', () => {
       const logger = new Logger();

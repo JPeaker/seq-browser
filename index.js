@@ -1,3 +1,3 @@
 const Logger = require('./src/logger');
 
-module.exports = new Logger();
+module.exports = Logger.instance;

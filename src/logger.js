@@ -1,10 +1,32 @@
 const logLevel = require('./log-level');
 const Transport = require('./transport');
 
-module.exports = class Logger {
+class Logger {
   constructor() {
     this.createLogger = () => new Logger();
     this.transport = new Transport();
+    this.context = {};
+  }
+
+  static writeToConsole(level, template, data) {
+    /* eslint-disable no-console */
+    switch (level) {
+      case logLevel.VERBOSE:
+      case logLevel.DEBUG:
+        console.debug(template, data);
+        break;
+      case logLevel.WARNING:
+        console.warn(template, data);
+        break;
+      case logLevel.ERROR:
+      case logLevel.FATAL:
+        console.error(template, data);
+        break;
+      default:
+        console.log(template, data);
+        break;
+    }
+    /* eslint-enable no-console */
   }
 
   set serverUrl(url) {
@@ -41,7 +63,9 @@ module.exports = class Logger {
 
   log(level, template, data = {}) {
     try {
-      Logger.writeToConsole(level, template, data);
+      const dataWithContext = Object.assign(data, this.context);
+
+      Logger.writeToConsole(level, template, dataWithContext);
       this.transport.writeToSeq(level, template, data);
     } catch (err) {
       /* eslint-disable no-console */
@@ -49,25 +73,8 @@ module.exports = class Logger {
       /* eslint-enable no-console */
     }
   }
+}
 
-  static writeToConsole(level, template, data) {
-    /* eslint-disable no-console */
-    switch (level) {
-      case logLevel.VERBOSE:
-      case logLevel.DEBUG:
-        console.debug(template, data);
-        break;
-      case logLevel.WARNING:
-        console.warn(template, data);
-        break;
-      case logLevel.ERROR:
-      case logLevel.FATAL:
-        console.error(template, data);
-        break;
-      default:
-        console.log(template, data);
-        break;
-    }
-    /* eslint-enable no-console */
-  }
-};
+Logger.instance = new Logger();
+
+module.exports = Logger;
