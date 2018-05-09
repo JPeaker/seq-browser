@@ -6,7 +6,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'seq-browser.js',
     library: 'seq',
-    libraryTarget: 'window',
+    libraryTarget: 'umd',
+    globalObject: 'this',
   },
   target: 'web',
   module: {
