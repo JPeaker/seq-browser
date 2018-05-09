@@ -1,6 +1,6 @@
 {
   "name": "seq-browser",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Log to Seq from the browser",
   "scripts": {
     "test": "cross-env NODE_ENV=test nyc mocha */*.spec.js && nyc report --reporter=html",
