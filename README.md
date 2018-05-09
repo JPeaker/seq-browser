@@ -7,10 +7,12 @@
 
 ## Usage
 
-Include the Javascript file under `dist/seq-browser.js`. The project uses WebPack so it supports CommonJS/AMD/RequireJS.
+Include the Javascript file under `dist/seq-browser.js`. The project uses WebPack so it supports
+CommonJS/AMD/RequireJS.
 
-If none of these are detected then it will be available under `window.seq`. A
-_seq-browser_ instance is pre-instantiated for you.
+If none of these are detected then it will be available under `window.seq`. A _seq-browser_ instance
+is pre-instantiated for you as a singleton. This allows you share the server settings and context
+throughout your application.
 
 #### Specify your Seq server url
 
@@ -45,4 +47,14 @@ log.information();
 log.warning();
 log.error();
 log.fatal();
+```
+
+#### Context
+
+To add properties that apply to all logs sent to Seq you can manipulate the `context` property
+of `Logger`.
+
+```javascript
+log.context.UserId = 99999;
+log.context.UserEmail = 'tester@test.com';
 ```
