@@ -5,13 +5,6 @@ module.exports = class Logger {
   constructor() {
     this.createLogger = () => new Logger();
     this.transport = new Transport();
-
-    this.verbose = this.log.bind(this, logLevel.VERBOSE);
-    this.debug = this.log.bind(this, logLevel.DEBUG);
-    this.information = this.log.bind(this, logLevel.INFORMATION);
-    this.warning = this.log.bind(this, logLevel.WARNING);
-    this.error = this.log.bind(this, logLevel.ERROR);
-    this.fatal = this.log.bind(this, logLevel.FATAL);
   }
 
   set serverUrl(url) {
@@ -20,6 +13,30 @@ module.exports = class Logger {
 
   set apiKey(key) {
     this.transport.apiKey = key;
+  }
+
+  verbose(template, data) {
+    this.log(logLevel.VERBOSE, template, data);
+  }
+
+  debug(template, data) {
+    this.log(logLevel.DEBUG, template, data);
+  }
+
+  information(template, data) {
+    this.log(logLevel.INFORMATION, template, data);
+  }
+
+  warning(template, data) {
+    this.log(logLevel.WARNING, template, data);
+  }
+
+  error(template, data) {
+    this.log(logLevel.ERROR, template, data);
+  }
+
+  fatal(template, data) {
+    this.log(logLevel.FATAL, template, data);
   }
 
   log(level, template, data = {}) {
