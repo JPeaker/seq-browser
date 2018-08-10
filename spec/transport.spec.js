@@ -162,5 +162,51 @@ describe('Transport', () => {
         }))
         .should.equal(true);
     });
+
+    it('sends correct body to Seq with API Key', () => {
+      global.fetch = sinon.spy();
+
+      const transport = new Transport();
+      transport.serverUrl = 'https://seq.test';
+      transport.apiKey = 'apiKey';
+      transport.logBuffer = [
+        {
+          '@t': '2018-05-08T23:00:05.123Z',
+          '@l': 'Debug',
+          '@mt': 'Test {User}',
+          User: 'Test',
+        },
+        {
+          '@t': '2018-05-08T23:10:15.321Z',
+          '@l': 'Fatal',
+          '@mt': '{Type}',
+          Type: 'Exception',
+        },
+      ];
+      const expected = transport.convertLogBufferToString();
+
+      transport.logBuffer = [
+        {
+          '@t': '2018-05-08T23:00:05.123Z',
+          '@l': 'Debug',
+          '@mt': 'Test {User}',
+          User: 'Test',
+        },
+        {
+          '@t': '2018-05-08T23:10:15.321Z',
+          '@l': 'Fatal',
+          '@mt': '{Type}',
+          Type: 'Exception',
+        },
+      ];
+      transport.send();
+
+      global.fetch
+        .calledWith(sinon.match.any, sinon.match({
+          method: 'POST',
+          body: expected,
+        }))
+        .should.equal(true);
+    });
   });
 });

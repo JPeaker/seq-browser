@@ -35,7 +35,9 @@ module.exports = class Transport {
 
     const jsonString = this.convertLogBufferToString();
 
-    fetch(`${this.serverUrl}/api/events/raw?clef`, {
+    const apiKeyParam = this.apiKey ? `&apiKey=${this.apiKey}` : '';
+
+    fetch(`${this.serverUrl}/api/events/raw?clef${apiKeyParam}`, {
       method: 'POST',
       body: jsonString,
     });
